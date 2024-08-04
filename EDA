@@ -28,7 +28,6 @@ sns.boxplot(x = 'CONDITION', y = 'SANCTION_AMT', data = data)
 sns.set_style("whitegrid")
 sns.boxplot(x = 'CONDITION', y = 'TOT_OUTSTD_BAL', data = data)
 
-#tips = sns.load_dataset("data")
 sns.scatterplot(x="CONDITION", y="OVER_DUE_AMT", data=data)
 
 sns.lineplot(x="CONDITION", y="OVER_DUE_AMT", data=data)
@@ -64,7 +63,7 @@ print(duplicate_values)
 
 #Remove null values
 data = data.sort_values(by='SANCTION_AMT')
-#Not the best option:
+#Not best method:
 data['NUMBER_OF_INSTALLMENTS'].fillna(data['NUMBER_OF_INSTALLMENTS'].mean(), inplace=True)
 data['REPAYMENT_FREQUENCY'].fillna(data['REPAYMENT_FREQUENCY'].mode()[0], inplace=True)
 data['TOT_OUTSTD_BAL'].fillna(0, inplace=True)
@@ -111,7 +110,6 @@ data=data.drop(['currency_code'], axis='columns')
 data['DATE_ACC_OPEN'] = pd.to_datetime(data['DATE_ACC_OPEN'])
 data['EXPECTED_END_DATE_OF_LOAN'] = pd.to_datetime(data['EXPECTED_END_DATE_OF_LOAN'])
 
-from sklearn import preprocessing
 label_encoder = preprocessing.LabelEncoder()
 data['CONDITION']= label_encoder.fit_transform(data['CONDITION'])
 
