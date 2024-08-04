@@ -127,9 +127,6 @@ mask
 plt.figure(figsize=(13,13))
 sns.heatmap(matrix, annot=True, vmax=1,vmin=-1,cmap='vlag',mask = mask)
 
-from sklearn.feature_selection import SelectKBest
-from sklearn.feature_selection import chi2
-
 Z= data[["Expected_Difference_Days",
 "REPAYMENT_FREQUENCY_AnnualInstalments360Days",
 "REPAYMENT_FREQUENCY_AtTheFinalDayOfThePeriodOfContract",
