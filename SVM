@@ -1,0 +1,11 @@
+X_train,X_test,y_train,y_test=train_test_split(X,Y,test_size=0.1,random_state=75)
+
+svm_classifier = SVC(random_state = 1234, class_weight = 'balanced', probability = True, verbose = True)
+svm_classifier.fit(X_train, y_train)
+
+prediction_values_svm = svm_classifier.predict(X_test)
+print(metrics.classification_report(y_test, prediction_values_svm, digits = 2))
+print(metrics.confusion_matrix(y_test, prediction_values_svm))
+print("Accuracy: ",metrics.accuracy_score(y_test, prediction_values_svm))
+print("Recall: ",metrics.recall_score(y_test, prediction_values_svm, zero_division=1))
+print("Precision: ",metrics.precision_score(y_test, prediction_values_svm, zero_division=1))
